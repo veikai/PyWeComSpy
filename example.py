@@ -1,5 +1,6 @@
 from PyWeComSpy import WeComSpy
 from PyWeComSpy.constant import *
+from PyWeComSpy import spy_pb2
 from queue import Queue
 
 
@@ -20,6 +21,14 @@ def handle_response(data):
         pass
     elif data.type == WECHAT_LOGIN:  # 微信登录
         print("企业微信登录")
+        spy.get_contacts()
+    elif data.type == CONTACTS_LIST:
+        contacts = spy_pb2.Contacts()
+        contacts.ParseFromString(data.bytes)
+        for contact in contacts.contact:
+            print(contact.wxid, contact.nickname)
+    else:
+        print(data)
 
 
 if __name__ == '__main__':
