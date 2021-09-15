@@ -1,0 +1,1 @@
+from .spy import WeComSpy
