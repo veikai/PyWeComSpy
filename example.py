@@ -5,7 +5,7 @@ from queue import Queue
 
 
 my_response_queue = Queue()
-spy = WeComSpy(response_queue=my_response_queue)
+spy = WeComSpy(response_queue=my_response_queue, key="ba31e59e9574332cdc7ee6198a725c70")
 
 
 def pop_response():
